@@ -4,7 +4,7 @@
 
 Приложение представляет из себя веб-сервис.
 
-![](pictures/service.png)
+![](https://github.com/ArtemChurin/DIPLOMA/blob/main/pictures/service.png)
 
 Приложение предлагает купить тур по определённой цене с помощью двух способов:
 1. Обычная оплата по дебетовой карте

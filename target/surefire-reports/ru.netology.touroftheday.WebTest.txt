@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ru.netology.touroftheday.WebTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
+ru.netology.touroftheday.WebTest.testDebitPayValidCard()  Time elapsed: 0.002 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ru.netology.touroftheday.entity.TourPage.showPayForm(boolean)" because "ru.netology.touroftheday.WebTest.tourPage" is null
+	at ru.netology.touroftheday.WebTest.testDebitPayValidCard(WebTest.java:24)
+

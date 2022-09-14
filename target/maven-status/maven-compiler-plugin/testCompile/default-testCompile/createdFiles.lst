@@ -1,0 +1,6 @@
+ru\netology\touroftheday\entity\BankCard.class
+ru\netology\touroftheday\entity\TourPage.class
+ru\netology\touroftheday\util\BankCardUtil.class
+ru\netology\touroftheday\WebTest.class
+ru\netology\touroftheday\RestApiTest.class
+ru\netology\touroftheday\util\DataBaseUtil.class

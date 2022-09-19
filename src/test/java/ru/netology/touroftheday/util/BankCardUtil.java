@@ -1,7 +1,7 @@
 package ru.netology.touroftheday.util;
 
 import com.github.javafaker.Faker;
-import ru.netology.touroftheday.entity.BankCard;
+import ru.netology.touroftheday.card.BankCard;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -158,5 +158,4 @@ public class BankCardUtil {
     public static BankCard getCardWithHolderOfSpecialSymbols() {
         return new BankCard(validCardNumber, getValidMonth(), getValidYear(), "^%###^&&*!@$%#^_-=+", getValidCVC());
     }
-
 }

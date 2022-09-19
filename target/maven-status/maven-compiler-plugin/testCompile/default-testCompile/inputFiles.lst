@@ -1,6 +1,9 @@
-C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\entity\TourPage.java
+C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\page\TourPageCreditPay.java
 C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\util\DataBaseUtil.java
-C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\entity\BankCard.java
 C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\util\BankCardUtil.java
+C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\card\BankCard.java
+C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\util\Path.java
 C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\WebTest.java
+C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\page\TourPageDebitPay.java
+C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\page\TourPageMain.java
 C:\Users\Gabriel\IdeaProjects\ARTEM\src\test\java\ru\netology\touroftheday\RestApiTest.java

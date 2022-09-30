@@ -1,0 +1,1 @@
+{"uuid":"ac62c411-b24e-40ba-94f5-2ee89622b563","name":"Покупка валидной дебетовой картой, значение владелец без имени","children":["5707b318-0aa3-472a-9e1c-23fd09b8b437"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538809484,"stop":1664538809764}],"afters":[],"start":1664538809481,"stop":1664538814953}

@@ -30,12 +30,12 @@ public class BankCardUtil {
     }
 
     //1
-    public static BankCard getValidCard() {
+    public static BankCard getApprovedCard() {
         return new BankCard(validCardNumber, getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
     }
 
     //2
-    public static BankCard getInValidCard() {
+    public static BankCard getDeclinedCard() {
         return new BankCard(invalidCardNumber, getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
     }
 
@@ -158,4 +158,5 @@ public class BankCardUtil {
     public static BankCard getCardWithHolderOfSpecialSymbols() {
         return new BankCard(validCardNumber, getValidMonth(), getValidYear(), "^%###^&&*!@$%#^_-=+", getValidCVC());
     }
+
 }

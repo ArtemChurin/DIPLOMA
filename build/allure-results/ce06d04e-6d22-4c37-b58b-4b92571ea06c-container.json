@@ -1,0 +1,1 @@
+{"uuid":"ce06d04e-6d22-4c37-b58b-4b92571ea06c","name":"Покупка валидной дебетовой картой, год значение 00","children":["bcfbfb0b-13f5-4d63-8a96-a3b9e4669f4e"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538804008,"stop":1664538804286}],"afters":[],"start":1664538804006,"stop":1664538805392}

@@ -5,7 +5,7 @@
 ## Документы
 * [Как правильно работать над дипломом?](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Howwork.md)
 * [Описание приложения](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Description.md)
-* [План](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Plan2.md)
+* [План автоматизации тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Plan2.md)
 * [Отчет по итогам тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Report.md)
 * [Отчет по итогам автоматизированного тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Itogo.md)
 
@@ -36,14 +36,14 @@
 **1.** Во втором терминале запустить тесты:
 
     для mySQL:
-    mvn clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
+    ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
 
     для postgresgl: 
-    mvn clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
+    ./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
 
 **2.** Создать отчёт Allure и открыть в браузере:
 
-    mvn allure:serve
+    ./gradlew allureServe
 
 # Действия после завершения авто-тестов:
 
@@ -54,3 +54,6 @@
 **2.** Для остановки работы контейнеров выполнить команду:
 
     docker-compose down
+
+### Дополнительные материалы:
+[Руководство по оформлению Markdown файлов](https://gist.github.com/Jekins/2bf2d0638163f1294637#Emphasis)

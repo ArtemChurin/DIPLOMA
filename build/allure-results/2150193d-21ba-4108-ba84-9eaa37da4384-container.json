@@ -1,0 +1,1 @@
+{"uuid":"2150193d-21ba-4108-ba84-9eaa37da4384","name":"Покупка валидной дебетовой картой со статусом DECLINED","children":["c1fbf33b-e2c1-471e-8bcf-d162d3c2b66c"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538846817,"stop":1664538847105}],"afters":[],"start":1664538846815,"stop":1664538863308}

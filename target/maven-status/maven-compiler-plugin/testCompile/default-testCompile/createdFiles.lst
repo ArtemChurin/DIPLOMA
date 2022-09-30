@@ -1,9 +1,0 @@
-ru\netology\touroftheday\card\BankCard.class
-ru\netology\touroftheday\util\BankCardUtil.class
-ru\netology\touroftheday\WebTest.class
-ru\netology\touroftheday\page\TourPageMain.class
-ru\netology\touroftheday\page\TourPageCreditPay.class
-ru\netology\touroftheday\page\TourPageDebitPay.class
-ru\netology\touroftheday\RestApiTest.class
-ru\netology\touroftheday\util\DataBaseUtil.class
-ru\netology\touroftheday\util\Path.class

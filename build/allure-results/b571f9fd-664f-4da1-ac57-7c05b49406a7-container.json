@@ -1,0 +1,1 @@
+{"uuid":"b571f9fd-664f-4da1-ac57-7c05b49406a7","name":"Покупка валидной дебетовой картой, месяц отсутствует","children":["667803b5-419b-422b-a3ad-318fb0449731"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538802701,"stop":1664538802965}],"afters":[],"start":1664538802700,"stop":1664538804005}

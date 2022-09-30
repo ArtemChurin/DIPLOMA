@@ -1,0 +1,1 @@
+{"uuid":"5b2d186e-8a1b-41f5-ade6-11e24ecb9c53","name":"Покупка валидной дебетовой картой, отсутствующей в БД банка","children":["9d778eae-d8c3-4fbc-89c9-138f4ea79cbb"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538824607,"stop":1664538826034}],"afters":[],"start":1664538824605,"stop":1664538829210}

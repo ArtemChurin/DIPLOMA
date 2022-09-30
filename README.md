@@ -9,8 +9,6 @@
 * [Отчет по итогам тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Report.md)
 * [Отчет по итогам автоматизированного тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Itogo.md)
 
-Дипломный проект представляет собой автоматизацию тестирования комплексного сервиса, взаимодействующего с СУБД и API Банка.
-
 На локальном компьютере заранее должны быть установлены IntelliJ IDEA и Docker
 
 ## Подготовка среды перед тестированием:
@@ -54,6 +52,3 @@
 **2.** Для остановки работы контейнеров выполнить команду:
 
     docker-compose down
-
-### Дополнительные материалы:
-[Руководство по оформлению Markdown файлов](https://gist.github.com/Jekins/2bf2d0638163f1294637#Emphasis)

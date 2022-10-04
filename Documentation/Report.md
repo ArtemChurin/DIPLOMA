@@ -1,7 +1,7 @@
 # Отчет по итогам тестирования
 ---
 В ходе тестирования было автоматизировано 52 тест-кейса
-![img.jpg](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/pictures/repa.jpg)
+![img.jpg](https://github.com/ArtemChurin/DIPLOMA/blob/main/Documentation/pictures/repa.jpg)
 Из них:
 
     - успешных оказалось 28 тест-кейсов (54%);

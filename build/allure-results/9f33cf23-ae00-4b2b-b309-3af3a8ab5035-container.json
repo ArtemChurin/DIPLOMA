@@ -1,1 +1,0 @@
-{"uuid":"9f33cf23-ae00-4b2b-b309-3af3a8ab5035","name":"Покупка валидной дебетовой картой, месяц значение 13","children":["f42fed65-1510-4553-bf94-0566aadcc93f"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538806692,"stop":1664538807070}],"afters":[],"start":1664538806690,"stop":1664538808126}

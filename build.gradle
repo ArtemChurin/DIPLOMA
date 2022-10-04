@@ -6,7 +6,6 @@ plugins {
 
 group 'org.netology'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
@@ -17,7 +16,7 @@ repositories {
 allure {
     version = '2.16.1'
     useJUnit5 {
-        version = '2.16.1'
+    version = '2.16.1'
     }
 }
 

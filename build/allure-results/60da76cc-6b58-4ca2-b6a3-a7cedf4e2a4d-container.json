@@ -1,1 +1,0 @@
-{"uuid":"60da76cc-6b58-4ca2-b6a3-a7cedf4e2a4d","name":"Покупка валидной дебетовой картой со статусом APPROVED","children":["eeb88767-7bbd-4235-82ce-c53c3a71915e"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538772153,"stop":1664538773013}],"afters":[],"start":1664538772151,"stop":1664538776833}

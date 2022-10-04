@@ -9,7 +9,8 @@
 * [Отчет по итогам тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Report.md)
 * [Отчет по итогам автоматизированного тестирования](https://github.com/ArtemChurin/DIPLOMA/blob/master/Documentation/Itogo.md)
 
-На локальном компьютере заранее должны быть установлены IntelliJ IDEA и Docker
+На локальном компьютере заранее должны быть установлены IntelliJ IDEA и Docker.
+AdGuard нужно отключить.
 
 ## Подготовка среды перед тестированием:
 

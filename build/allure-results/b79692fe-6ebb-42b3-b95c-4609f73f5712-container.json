@@ -1,1 +1,0 @@
-{"uuid":"b79692fe-6ebb-42b3-b95c-4609f73f5712","name":"Покупка валидной дебетовой картой, CVV значение 000","children":["1518002e-1199-41dd-a906-bbecc9ea2124"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1664538758241,"stop":1664538759162}],"afters":[],"start":1664538758241,"stop":1664538772149}

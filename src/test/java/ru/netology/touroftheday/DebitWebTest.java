@@ -1,31 +1,39 @@
 package ru.netology.touroftheday;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import ru.netology.touroftheday.card.BankCard;
 import ru.netology.touroftheday.page.TourPageDebitPay;
 import ru.netology.touroftheday.page.TourPageMain;
 import ru.netology.touroftheday.util.BankCardUtil;
 import ru.netology.touroftheday.util.DataBaseUtil;
+
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class WebTest {
+public class DebitWebTest {
 
     private static TourPageMain tourMainPage;
+
+    @BeforeAll
+    public static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
     @BeforeEach
     public void openPage() {
         open("http://localhost:8080/");
         tourMainPage = new TourPageMain();
         DataBaseUtil.setDown();
+    }
+
+    @AfterAll
+    public static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     //1
@@ -46,11 +54,10 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("approved"));
+        assertEquals("approved", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
 
         assertNull(orders.get(0).getCredit_id());
-
     }
 
     //2
@@ -70,11 +77,10 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("declined"));
+        assertEquals("declined", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
 
         assertNull(orders.get(0).getCredit_id());
-
     }
 
     //3
@@ -94,9 +100,8 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("declined"));
+        assertEquals("declined", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
-
     }
 
     //4
@@ -108,7 +113,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Номер карты']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Номер карты");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
@@ -130,8 +135,6 @@ public class WebTest {
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
-
     }
 
     //6
@@ -143,7 +146,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Номер карты']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Номер карты");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
@@ -161,7 +164,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Номер карты']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Номер карты");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
@@ -179,7 +182,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Месяц']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Месяц");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
@@ -197,14 +200,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Месяц']/..//span[@class='input__sub']").shouldBe(visible, text("Неверно указан срок действия карты"));
+       debitPage.invalidDateNotification("Месяц");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //10
@@ -216,14 +218,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Месяц']/..//span[@class='input__sub']").shouldBe(visible, text("Неверно указан срок действия карты"));
+        debitPage.invalidDateNotification("Месяц");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //11
@@ -235,14 +236,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Месяц']/..//span[@class='input__sub']").shouldBe(visible, text("Неверно указан срок действия карты"));
+        debitPage.invalidDateNotification("Месяц");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders  = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //12
@@ -254,7 +254,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Год']/..//span[@class='input__sub']").shouldBe(visible, text("Поле обязательно для заполнения"));
+        debitPage.mustBeFilledNotification("Год");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
@@ -272,7 +272,7 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Год']/..//span[@class='input__sub']").shouldBe(visible, text("Истёк срок действия карты"));
+        debitPage.expiredNotification("Год");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
@@ -290,14 +290,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Год']/..//span[@class='input__sub']").shouldBe(visible, text("Истёк срок действия карты"));
+        debitPage.expiredNotification("Год");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //15
@@ -309,14 +308,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Год']/..//span[@class='input__sub']").shouldBe(visible, text("Неверно указан срок действия карты"));
+        debitPage.invalidDateNotification("Год");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //16
@@ -328,14 +326,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='CVC/CVV']/..//span[@class='input__sub']").shouldBe(visible, text("Поле обязательно для заполнения"));
+        debitPage.mustBeFilledNotification("CVC/CVV");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //17
@@ -347,14 +344,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='CVC/CVV']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("CVC/CVV");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //18
@@ -366,14 +362,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='CVC/CVV']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("CVC/CVV");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //19
@@ -394,11 +389,10 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("approved"));
+        assertEquals("approved", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
 
         assertNull(orders.get(0).getCredit_id());
-
     }
 
     //20
@@ -419,11 +413,10 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("approved"));
+        assertEquals("approved", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
 
         assertNull(orders.get(0).getCredit_id());
-
     }
 
     //21
@@ -444,11 +437,10 @@ public class WebTest {
         assertEquals(1, orders.size());
 
         assertEquals(45000, payments.get(0).getAmount());
-        assertTrue(payments.get(0).getStatus().equalsIgnoreCase("approved"));
+        assertEquals("approved", payments.get(0).getStatus().toLowerCase());
         assertEquals(payments.get(0).getTransaction_id(), orders.get(0).getPayment_id());
 
         assertNull(orders.get(0).getCredit_id());
-
     }
 
     //22
@@ -460,14 +452,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Владелец']/..//span[@class='input__sub']").shouldBe(visible, text("Поле обязательно для заполнения"));
+        debitPage.mustBeFilledNotification("Владелец");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //23
@@ -479,14 +470,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Владелец']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Владелец");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //24
@@ -498,14 +488,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Владелец']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Владелец");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //25
@@ -517,14 +506,13 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Владелец']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Владелец");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
 
     //26
@@ -536,14 +524,12 @@ public class WebTest {
 
         debitPage.makeBuy(card);
 
-        $x("//span[text()='Владелец']/..//span[@class='input__sub']").shouldBe(visible, text("Неверный формат"));
+        debitPage.wrongFormatNotification("Владелец");
 
         List<DataBaseUtil.PaymentEntity> payments = DataBaseUtil.getPayments();
         List<DataBaseUtil.OrderEntity> orders = DataBaseUtil.getOrders();
 
         assertEquals(0, payments.size());
         assertEquals(0, orders.size());
-
     }
-
 }
